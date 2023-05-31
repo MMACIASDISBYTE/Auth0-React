@@ -8,11 +8,13 @@ import { Auth0Provider } from '@auth0/auth0-react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+// Configuracion del dominio y clientId, deben de generarlas nuevamente en una variable de entorno (archivo :ENV)
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId =  process.env.REACT_APP_AUTH0_CLIENT_ID;
 
 root.render(
   <React.StrictMode>
+    {/* DEBEMOS ENCERRAR LA APP EN EL AuthPrivider0 para poder manejar la sesion en toda la APP */}
     <Auth0Provider domain={domain} clientId={clientId} redirectUri={window.location.origin}>
       <App/>
     </Auth0Provider>
