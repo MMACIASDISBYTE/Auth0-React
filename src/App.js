@@ -1,25 +1,24 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import './App.css';
-import { LogOutButton } from './components/LogOutButton';
-import { LoginButton } from './components/LoginButton';
-import { Profile } from './components/Profile';
+import { Routes, Route } from 'react-router-dom';
+import { Home } from './components/Home';
+import { LayOut } from './components/pages/LayOut';
+import { InfoUser } from './components/pages/InfoUser';
 
 function App() {
 
   // metodos de Auth0
-  const {isAuthenticated, isLoading} = useAuth0();
+  const { isLoading} = useAuth0();
 
   if(isLoading) return <h1>Loading...</h1>;
 
   return (
     <div className="App">
-      <h2>Application</h2>
-      {/* vemos si esta eutenticado, si lo esta mostramos solo logtou, sino login */}
-      {
-        isAuthenticated ? <LogOutButton/> : <LoginButton/>
-      }
-      <Profile/>
-      
+      <Routes>
+        <Route path='/' exactly={true} element={<Home/>}></Route>
+        <Route path='/guest' element={<LayOut/>}></Route>
+        <Route path='/info-user/:token' element={<InfoUser/>}></Route>
+      </Routes>      
     </div>
   );
 }
