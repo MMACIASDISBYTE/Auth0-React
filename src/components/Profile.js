@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
-import JSONPretty from 'react-json-pretty';
 import 'react-json-pretty/themes/monikai.css'; // es opcional le da el estilo al JSONPretty
 
 import Button from 'react-bootstrap/Button';

@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 export const InfoUser = () => {
 
   const { user } = useAuth0();
-  const { token } = useParams()
+  const { token } = useParams();
   return (
     <>
     <h2>Informacion que llega de AUTH0 del usuario</h2>
