@@ -17,7 +17,11 @@ const clientId =  process.env.REACT_APP_AUTH0_CLIENT_ID;
 root.render(
   <React.StrictMode>
     {/* DEBEMOS ENCERRAR LA APP EN EL AuthPrivider0 para poder manejar la sesion en toda la APP */}
-    <Auth0Provider domain={domain} clientId={clientId} redirectUri={window.location.origin}>
+    <Auth0Provider
+      domain={domain}
+      clientId={clientId}
+      redirectUri={window.location.origin}
+    >
       <BrowserRouter>
         <App/>
       </BrowserRouter>

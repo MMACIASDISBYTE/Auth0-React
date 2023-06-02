@@ -10,7 +10,13 @@ import Card from 'react-bootstrap/Card';
 export const Profile = () => {
   const { user, isAuthenticated, getAccessTokenSilently  } = useAuth0();
   const [ token, setToken ] = useState('');
+
+  // const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+  // const client_id = process.env.REACT_APP_AUTH0_CLIENT_ID;
+
+  // const [userMetadata, setUserMetadata] = useState(null);
   
+    //NO DEVUELVE EL TOKEN FUNCIONAL
   useEffect(() =>{
 
     const fetchToken = async () =>{
@@ -27,6 +33,12 @@ export const Profile = () => {
       fetchToken();
     }
   }, [getAccessTokenSilently, isAuthenticated]);
+
+  // const location = useLocation();
+  // const history = useHistory();
+  // const handleInfoClick = () =>{
+  //  history.push('/info-user', { token: token});
+  // }
   
   return (
     //valido que el usuario este autenticado para traerlo a la vista, sino rompe
@@ -40,7 +52,12 @@ export const Profile = () => {
             <Card.Text>
             <p>{user.name} {user.email}</p>
             </Card.Text>
-            <Link to={`/info-user/${token}`}><Button variant="primary">Info</Button></Link>
+            <Link
+            to={`/info-user/${token}`}
+            // to={{ pathname: '/info-user', state: { token: token } }} onClick={handleInfoClick}
+            >
+              <Button variant="primary">Info</Button>
+            </Link>
           </Card.Body>
         </Card>
         
