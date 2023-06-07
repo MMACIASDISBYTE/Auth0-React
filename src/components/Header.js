@@ -11,7 +11,7 @@ export const Header = () => {
 
   return (
     <header>
-      <img src='/LogoDisbyte.png' alt="Logo Disbyte" />
+      <img src='/LogoDisbyte_blanco.png' alt="Logo Disbyte" />
       <div style={{ flex: '1', textAlign: 'center' }}>
         <h1>Disbyte</h1>
       </div>
