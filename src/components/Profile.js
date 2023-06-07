@@ -15,65 +15,65 @@ export const Profile = () => {
   
   
   
-  //NO DEVUELVE EL TOKEN FUNCIONAL (siendo invalido)
-  // const [ token, setToken ] = useState('');
-  // useEffect(() =>{
+  // NO DEVUELVE EL TOKEN FUNCIONAL (siendo invalido)
+  const [ token, setToken ] = useState('');
+  useEffect(() =>{
     
-  //   const fetchToken = async () =>{
-  //     try{
-  //       const accessToken = await getAccessTokenSilently();
-  //       console.log(accessToken);
-  //       setToken(accessToken);
-  //     }catch(error){
-  //       console.log('Error al obtener el token de acceso:', error);
-  //     }
-  //   }
+    const fetchToken = async () =>{
+      try{
+        const accessToken = await getAccessTokenSilently();
+        console.log(accessToken);
+        setToken(accessToken);
+      }catch(error){
+        console.log('Error al obtener el token de acceso:', error);
+      }
+    }
     
-  //   if(isAuthenticated){
-  //     fetchToken();
-  //   }
-  // }, [getAccessTokenSilently, isAuthenticated]);
+    if(isAuthenticated){
+      fetchToken();
+    }
+  }, [getAccessTokenSilently, isAuthenticated]);
 
 
   
     // METODO DE Libreria de AUTH0  https://auth0.com/docs/quickstart/spa/react/02-calling-an-api
-    const [userMetadata, setUserMetadata] = useState(null);
-  useEffect(() => {
-    const getUserMetadata = async () => {
-      const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+  //   const [userMetadata, setUserMetadata] = useState(null);
+  // useEffect(() => {
+  //   const getUserMetadata = async () => {
+  //     const domain = process.env.REACT_APP_AUTH0_DOMAIN;
   
-      try {
-        const accessToken = await getAccessTokenSilently({
-          authorizationParams: {
-            audience: `https://${domain}/api/v2/`,
-            scope: "read:current_user",
-          },
-        });
-        console.log(accessToken);
+  //     try {
+  //       const accessToken = await getAccessTokenSilently({
+  //         authorizationParams: {
+  //           audience: `https://${domain}/api/v2/`,
+  //           scope: "read:current_user",
+  //         },
+  //       });
+  //       console.log(accessToken);
 
-        const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
+  //       const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
   
-        console.log(userDetailsByIdUrl)
+  //       console.log(userDetailsByIdUrl)
 
-        const metadataResponse = await fetch(userDetailsByIdUrl, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
+  //       const metadataResponse = await fetch(userDetailsByIdUrl, {
+  //         headers: {
+  //           Authorization: `Bearer ${accessToken}`,
+  //         },
+  //       });
   
-        const { user_metadata } = await metadataResponse.json();
+  //       const { user_metadata } = await metadataResponse.json();
   
-        setUserMetadata(user_metadata);
-        console.log(user_metadata);
-      } catch (e) {
-        console.log(e.message);
-      }
-    };
+  //       setUserMetadata(user_metadata);
+  //       console.log(user_metadata);
+  //     } catch (e) {
+  //       console.log(e.message);
+  //     }
+  //   };
   
-    getUserMetadata();
-  }, [getAccessTokenSilently, user?.sub]);
+  //   getUserMetadata();
+  // }, [getAccessTokenSilently, user?.sub]);
 
-  console.log(userMetadata);
+  // console.log(userMetadata);
   
   return (
     //valido que el usuario este autenticado para traerlo a la vista, sino rompe
@@ -89,8 +89,8 @@ export const Profile = () => {
             {/* <p>{userMetadata}</p> */}
             </Card.Text>
             <Link
-            to={`/info-user/${userMetadata}`}
-            // to={`/info-user/${token}`}
+            // to={`/info-user/${userMetadata}`}
+            to={`/info-user/${token}`}
             // to={{ pathname: '/info-user', state: { token: token } }} onClick={handleInfoClick}
             >
               <Button variant="primary">Info</Button>
