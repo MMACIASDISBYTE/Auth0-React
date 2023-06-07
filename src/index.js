@@ -21,6 +21,11 @@ root.render(
       domain={domain}
       clientId={clientId}
       redirectUri={window.location.origin}
+      useRefreshTokens={true}
+      useRefreshTokensFallback={false}
+      authorizationParams={{
+      redirect_uri:"http://localhost:3000//dev-7qwkde4r318nfwz7.us.auth0.com/capacitor/http://localhost:3000/callback"
+    }}
     >
       <BrowserRouter>
         <App/>

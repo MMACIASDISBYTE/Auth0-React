@@ -18,7 +18,7 @@ export const Home = () => {
       {
         isAuthenticated ? <LogOutButton/> : <LoginButton/>
       }
-        <Profile/>
+        <Profile />
     </>
   )
 }
