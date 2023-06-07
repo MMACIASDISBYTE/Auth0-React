@@ -1,7 +1,16 @@
 import {  useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 import '../Header.css'
+import { Link } from 'react-router-dom';
+import { LogOutButton } from './LogOutButton';
+import { LoginButton } from './LoginButton';
+import { Profile } from './Profile';
+import { Button } from 'react-bootstrap';
+
+
 
 export const Header = () => {
+  const {isAuthenticated} = useAuth0();
     const [isOpen, setIsOpen] = useState(false);
 
     const handleMenuToggle = () => {
@@ -22,14 +31,20 @@ export const Header = () => {
         {isOpen && (
           <ul>
             <li>
-              <a href="/login">Login</a>
+            {
+        isAuthenticated ? 
+          <Link to={`/info-user/aaa`}>
+            <p>Info</p>
+          </Link>
+            : <Profile/>
+            }
             </li>
             <li>
-              <a href="/profile">Profile</a>
+            {
+              isAuthenticated ? <LogOutButton/> : <LoginButton/>
+            }
             </li>
-            <li>
-              <a href="/logout">LogOut</a>
-            </li>
+            <Link to='https://www.disbyte.com/' target='_blank'><li>Web Disbyte</li></Link>
           </ul>
         )}
       </div>

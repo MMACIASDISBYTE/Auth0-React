@@ -51,7 +51,6 @@ export const Profile = () => {
         });
         console.log(accessToken);
 
-  
         const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
   
         console.log(userDetailsByIdUrl)
@@ -65,6 +64,7 @@ export const Profile = () => {
         const { user_metadata } = await metadataResponse.json();
   
         setUserMetadata(user_metadata);
+        console.log(user_metadata);
       } catch (e) {
         console.log(e.message);
       }
