@@ -3,6 +3,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { LogOutButton } from './LogOutButton';
 import { LoginButton } from './LoginButton';
 import { Profile } from './Profile';
+import { Header } from './Header';
+import { Footer } from './Footer';
 
 export const Home = () => {
 
@@ -13,12 +15,13 @@ export const Home = () => {
 
   return (
     <>
-          <h2>Application</h2>
+    <Header />
         {/* vemos si esta eutenticado, si lo esta mostramos solo logout, sino login */}
       {
         isAuthenticated ? <LogOutButton/> : <LoginButton/>
       }
         <Profile />
+      <Footer/>
     </>
   )
 }

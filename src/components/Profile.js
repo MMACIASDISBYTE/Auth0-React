@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 import 'react-json-pretty/themes/monikai.css'; // es opcional le da el estilo al JSONPretty
-
+import './pages/pages.css';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
@@ -102,7 +102,7 @@ export const Profile = () => {
 
         </div>
         
-        <Link to='/guest'><Button variant="primary">Guest</Button></Link>
+        {/* <Link to='/guest'><Button variant="primary">Guest</Button></Link> */}
       </>
     )
   )
