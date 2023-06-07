@@ -79,7 +79,7 @@ export const Profile = () => {
     //valido que el usuario este autenticado para traerlo a la vista, sino rompe
     isAuthenticated && (
       <>
-        <div className="d-flex justify-content-center align-items-center" style={{ height: '80vh' }}>
+        <div className="d-flex justify-content-center align-items-center" style={{ height: '60vh' }}>
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" src={user.picture} />
           <Card.Body>
